@@ -1,4 +1,21 @@
 <!doctype html>
+<?php
+$servername = "127.0.0.1";
+$username = "98102221";
+$password = "98102221";
+$dbname = "db98102221";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sqlQuery = "SELECT * FROM Users;";
+$result = $conn->query($sqlQuery);
+$data = $result->fetch_all(MYSQLI_ASSOC);
+
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -12,13 +29,13 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Navbar</span>
+        <span class="navbar-brand mb-0 h1"><?php echo $data[1]["Username"]; ?></span>
     </nav>
     
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Welcome to the shop</h1>
-            <p class="lead">Buy a movie!</p>
+            <h1>Buy a movie</h1>
         </div>
     </div>
 
