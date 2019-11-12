@@ -29,7 +29,7 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1"><?php echo $data[1]["Username"]; ?></span>
+        <span class="navbar-brand mb-0 h1"><?php echo $data[0]["Username"]; ?></span>
     </nav>
     
     <div class="jumbotron jumbotron-fluid">
