@@ -11,10 +11,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sqlQuery = "SELECT * FROM Users;";
-$result = $conn->query($sqlQuery);
-$data = $result->fetch_all(MYSQLI_ASSOC);
-
 ?>
 <html lang="en">
   <head>
@@ -29,7 +25,7 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1"><?php echo $data[1]["Username"]; ?></span>
+        <span class="navbar-brand mb-0 h1">Navbar</span>
     </nav>
     
     <div class="jumbotron jumbotron-fluid">
