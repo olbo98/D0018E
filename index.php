@@ -1,5 +1,6 @@
 <!doctype html>
 <?php
+session_start();
 $servername = "127.0.0.1";
 $username = "98102221";
 $password = "98102221";
@@ -25,7 +26,18 @@ if (!$conn) {
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Navbar</span>
+        <span class="navbar-brand mb-0 h1">
+            <?php 
+            if(isset($_SESSION["username"]))
+            {
+                echo $_SESSION["username"];
+            }
+            else
+            {
+                echo "Navbar";
+            }
+            ?>
+        </span>
     </nav>
     
     <div class="jumbotron jumbotron-fluid">
