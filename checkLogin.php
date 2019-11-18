@@ -1,15 +1,9 @@
 <?php
 session_start();
-$servername = "127.0.0.1";
-$username = "98102221";
-$password = "98102221";
-$dbname = "db98102221";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "functions.php";
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+$conn = connectToDB();
 
 $username = $_POST["username"];
 $password = $_POST["password"];
