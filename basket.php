@@ -20,7 +20,7 @@ $conn = connectToDB();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="ordersStyle.css" type="text/css">
+    <link rel="stylesheet" href="basketStyle.css" type="text/css">
 
     <title>QT</title>
   </head>
@@ -53,10 +53,8 @@ $conn = connectToDB();
         <div style="font-size: 20px; padding-right: 50px">Datum</div>
         <div style="font-size: 20px;">Pris</div>
     </div>
-    <div class="d-flex order-products">
-        <div class="flex-grow-1" style="font-size: 17px;">Product</div>
-        <div style="font-size: 17px; padding-right: 50px">Quantity</div>
-        <div style="font-size: 17px;">sub-total</div>
+    <div class="order-products">
+        
     </div>
 
     <!-- Optional JavaScript -->
