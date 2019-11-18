@@ -1,0 +1,14 @@
+.order-head
+{
+    width: 60%; 
+    max-width:100%; 
+    margin: 0 auto; 
+    background-color: brown;
+    padding: 7px 20px;
+}
+
+.order-products
+{
+    width: 60%;
+    max-width: 100%;
+}
