@@ -11,6 +11,8 @@ include "functions.php";
 
 $conn = connectToDB();
 
+$query = "SELECT "
+
 ?>
 <html lang="en">
   <head>
