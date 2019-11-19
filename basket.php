@@ -48,12 +48,7 @@ $conn = connectToDB();
         </div>
     </nav>
       
-    <div class="d-flex order-head">
-        <div class="flex-grow-1" style="font-size: 20px;">Order ID</div>
-        <div style="font-size: 20px; padding-right: 50px">Datum</div>
-        <div style="font-size: 20px;">Pris</div>
-    </div>
-    <div class="order-products">
+    <div>
         
     </div>
 

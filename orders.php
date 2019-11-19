@@ -11,7 +11,9 @@ include "functions.php";
 
 $conn = connectToDB();
 
-$query = "SELECT "
+$query = "SELECT * FROM orderItems WHERE orderID IN(SELECT orderID FROM Orders where userID IN(SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."'))";
+
+$result = $conn->query($query);
 
 ?>
 <html lang="en">
