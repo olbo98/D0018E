@@ -15,3 +15,14 @@
     background-color: green;
     padding: 7px 20px;
 }
+
+.orderText1
+{
+    width: 60%;
+}
+
+.orderText2
+{
+    width: 20%;
+    text-align: right;
+}

@@ -11,9 +11,30 @@ include "functions.php";
 
 $conn = connectToDB();
 
-$query = "SELECT * FROM orderItems WHERE orderID IN(SELECT orderID FROM Orders where userID IN(SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."'))";
+/*$query = "SELECT * FROM orderItems WHERE orderID IN(SELECT orderID FROM Orders where userID IN(SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."'))";
 
-$result = $conn->query($query);
+$orderItems = $conn->query($query);
+$allOrderItems = $orderItems->fetch_all(MYSQLI_ASSOC);
+
+$query2 = "SELECT * FROM Products WHERE productID IN(";
+for($i = 0; $i < count($allOrderItems); $i++){
+    if($i == count($allOrderItems)-1){
+        $query2 = $query2.$allOrderItems[$i]["productID"];
+    }else{
+        $query2 = $query2.$allOrderItems[$i]["productID"].",";
+    }
+}
+$query2 = $query2.")";
+
+echo $query2;
+
+$products = $conn->query($query2);
+$allProducts = $products->fetch_all(MYSQLI_ASSOC);*/
+
+$query3 = "SELECT * FROM Orders WHERE userID IN(SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."')";
+
+$orders = $conn->query($query3);
+$allOrders = $orders->fetch_all(MYSQLI_ASSOC);
 
 ?>
 <html lang="en">
@@ -62,6 +83,52 @@ $result = $conn->query($query);
         <div style="font-size: 17px; padding-right: 50px">Quantity</div>
         <div style="font-size: 17px;">sub-total</div>
     </div>
+    <div class="d-flex order-products">
+        <div class="orderText1" style="font-size: 17px;">Product</div>
+        <div class="orderText2" style="font-size: 17px;">Quantity</div>
+        <div class="orderText2" style="font-size: 17px;">sub-total</div>
+    </div>
+    
+    <?php
+        
+      for($j = 0; $j<count($allOrders); $j++){
+          
+          $totaltPris = 0;
+          
+          $queryOrderItems = "SELECT * FROM orderItems WHERE orderID =".$allOrders[$j]["orderID"];
+          $result = $conn->query($queryOrderItems);
+          $allOrderItems = $result->fetch_all(MYSQLI_ASSOC);
+          
+          $queryProducts = "SELECT * FROM Products WHERE productID IN(";
+          for($i = 0; $i < count($allOrderItems); $i++){
+            if($i == count($allOrderItems)-1){
+                $queryProducts = $queryProducts.$allOrderItems[$i]["productID"];
+            }else{
+                $queryProducts = $queryProducts.$allOrderItems[$i]["productID"].",";
+            }
+          }
+          $queryProducts = $queryProducts.")";
+          $productsResult = $conn->query($queryProducts);
+          $allProducts = $productsResult->fetch_all(MYSQLI_ASSOC);
+          
+          for($
+              
+            echo '<div class="d-flex order-head">
+        <div class="flex-grow-1" style="font-size: 20px;">Order ID: '.$allOrders[$j]["orderID"].'</div>
+        <div style="font-size: 20px; padding-right: 50px">Datum: '.$allOrders[$j]["orderDate"].'</div>
+        <div style="font-size: 20px;">Pris</div>
+            </div>';
+          
+          for($i=0; $i<count($allProducts); $i++){
+          echo '<div class="d-flex order-products">
+        <div class="orderText1" style="font-size: 17px;">'.$allProducts[$i]["name"].'</div>
+        <div class="orderText2" style="font-size: 17px;">'.$allOrderItems[$i]["quantity"].'</div>
+        <div class="orderText2" style="font-size: 17px;">'.$allProducts[$i]["price"]*$allOrderItems[$i]["quantity"].'</div>
+            </div>';
+        }
+      }
+      
+    ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
