@@ -1,0 +1,56 @@
+body {
+	background-color: lightgray;
+	background-size: 100%;
+	/*background-image: url("CH.jpg");*/
+	background-attachment: fixed;
+}
+.btn {
+	width: 350px;
+	text-align: center;
+}
+
+/*.navbar{
+    height: 100px;  
+}*/
+
+.movies1{
+	position:absolute;
+	left: 0px;
+	margin-top: 20px;
+	width:530px;
+	height:320px;
+	
+}
+
+.movies2{
+	position:absolute;
+	left: 0px;
+	bottom: 0px;
+	width:530px;
+	height:350px;
+	
+}
+.movies3{
+	position:absolute;
+	right: 0px;
+	margin-top: 20px;
+	width:530px;
+	height:320px;
+	
+}
+.movies4{
+	position:absolute;
+	right: 0px;
+	bottom: 0px;
+	width:530px;
+	height:350px;
+	
+}
+.movies5{
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:-20px;
+	width:475px;
+	height:677px;
+}
