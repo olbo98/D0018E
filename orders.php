@@ -11,30 +11,14 @@ include "functions.php";
 
 $conn = connectToDB();
 
-/*$query = "SELECT * FROM orderItems WHERE orderID IN(SELECT orderID FROM Orders where userID IN(SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."'))";
+$queryUserID = "SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."'";
 
-$orderItems = $conn->query($query);
-$allOrderItems = $orderItems->fetch_all(MYSQLI_ASSOC);
+$result = $conn->query($queryUserID);
+$userID = $orders->fetch_assoc();
 
-$query2 = "SELECT * FROM Products WHERE productID IN(";
-for($i = 0; $i < count($allOrderItems); $i++){
-    if($i == count($allOrderItems)-1){
-        $query2 = $query2.$allOrderItems[$i]["productID"];
-    }else{
-        $query2 = $query2.$allOrderItems[$i]["productID"].",";
-    }
-}
-$query2 = $query2.")";
+$queryProductOrder = "SELECT Orders.userID, Orders.orderDate, Orders.orderStatus, orderItems.*, Products.name, Products.quantity, Products.price FROM ((Orders INNER JOIN orderItems ON Orders.orderID = orderItems.orderID) INNER JOIN Products ON orderItems.productID = Products.productID) WHERE userID=".$_SESSION["userID"]." ORDER BY orderDate ASC";
 
-echo $query2;
 
-$products = $conn->query($query2);
-$allProducts = $products->fetch_all(MYSQLI_ASSOC);*/
-
-$query3 = "SELECT * FROM Orders WHERE userID IN(SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."')";
-
-$orders = $conn->query($query3);
-$allOrders = $orders->fetch_all(MYSQLI_ASSOC);
 
 ?>
 <html lang="en">
