@@ -11,12 +11,14 @@ include "functions.php";
 
 $conn = connectToDB();
 
-$queryUserID = "SELECT userID FROM Users WHERE username ='".$_SESSION["username"]."'";
+$queryProductOrder = "SELECT Orders.userID, Orders.orderDate, Orders.orderStatus, orderItems.*, Products.name, Products.quantity, Products.price FROM ((Orders INNER JOIN orderItems ON Orders.orderID = orderItems.orderID) INNER JOIN Products ON orderItems.productID = Products.productID) WHERE userID=".$_SESSION["userID"]." ORDER BY orderDate DESC";
 
-$result = $conn->query($queryUserID);
-$userID = $orders->fetch_assoc();
+$resultQueryProductOrder = $conn->query($queryProductOrder);
+$orderRow = $resultQueryProductOrder->fetch_assoc();
 
-$queryProductOrder = "SELECT Orders.userID, Orders.orderDate, Orders.orderStatus, orderItems.*, Products.name, Products.quantity, Products.price FROM ((Orders INNER JOIN orderItems ON Orders.orderID = orderItems.orderID) INNER JOIN Products ON orderItems.productID = Products.productID) WHERE userID=".$_SESSION["userID"]." ORDER BY orderDate ASC";
+$queryCountOrders = "SELECT COUNT(orderItems.itemID), Orders.orderID FROM (Orders INNER JOIN orderItems ON Orders.orderID = orderItems.orderID) WHERE userID=".$_SESSION['userID']." GROUP BY(Orders.orderID)";
+
+$resultCountOrders = $conn->query($queryCountOrders);
 
 
 
@@ -74,42 +76,22 @@ $queryProductOrder = "SELECT Orders.userID, Orders.orderDate, Orders.orderStatus
     </div>
     
     <?php
-        
-      for($j = 0; $j<count($allOrders); $j++){
+      while($row = $resultCountOrders->fetch_row()){
           
-          $totaltPris = 0;
-          
-          $queryOrderItems = "SELECT * FROM orderItems WHERE orderID =".$allOrders[$j]["orderID"];
-          $result = $conn->query($queryOrderItems);
-          $allOrderItems = $result->fetch_all(MYSQLI_ASSOC);
-          
-          $queryProducts = "SELECT * FROM Products WHERE productID IN(";
-          for($i = 0; $i < count($allOrderItems); $i++){
-            if($i == count($allOrderItems)-1){
-                $queryProducts = $queryProducts.$allOrderItems[$i]["productID"];
-            }else{
-                $queryProducts = $queryProducts.$allOrderItems[$i]["productID"].",";
-            }
-          }
-          $queryProducts = $queryProducts.")";
-          $productsResult = $conn->query($queryProducts);
-          $allProducts = $productsResult->fetch_all(MYSQLI_ASSOC);
-          
-          for($
-              
-            echo '<div class="d-flex order-head">
-        <div class="flex-grow-1" style="font-size: 20px;">Order ID: '.$allOrders[$j]["orderID"].'</div>
-        <div style="font-size: 20px; padding-right: 50px">Datum: '.$allOrders[$j]["orderDate"].'</div>
+          echo '<div class="d-flex order-head">
+        <div class="flex-grow-1" style="font-size: 20px;">'.$orderRow["orderID"].'</div>
+        <div style="font-size: 20px; padding-right: 50px">'.$orderRow["orderDate"].'</div>
         <div style="font-size: 20px;">Pris</div>
-            </div>';
+    </div>';
           
-          for($i=0; $i<count($allProducts); $i++){
-          echo '<div class="d-flex order-products">
-        <div class="orderText1" style="font-size: 17px;">'.$allProducts[$i]["name"].'</div>
-        <div class="orderText2" style="font-size: 17px;">'.$allOrderItems[$i]["quantity"].'</div>
-        <div class="orderText2" style="font-size: 17px;">'.$allProducts[$i]["price"]*$allOrderItems[$i]["quantity"].'</div>
-            </div>';
-        }
+          for($i=0; $i<$row[0]; $i++){
+              echo '<div class="d-flex order-products">
+        <div class="orderText1" style="font-size: 17px;">'.$orderRow["name"].'</div>
+        <div class="orderText2" style="font-size: 17px;">'.$orderRow["quantity"].'</div>
+        <div class="orderText2" style="font-size: 17px;">sub-total</div>
+    </div>';
+              $orderRow = $resultQueryProductOrder->fetch_assoc();
+          }
       }
       
     ?>
