@@ -12,6 +12,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+
+
 ?>
 <html lang="en">
   <head>
@@ -39,7 +41,15 @@ if (!$conn) {
   
 		<ul class="navbar-nav">
 			<a class="nav-link" href="basket.php" style="font-size: 20px;">Shopping Basket</a>
-			<a class="nav-link" href="login.php" style="font-size: 20px;"> Log in</a>
+            <?php
+            if(isset($_SESSION["username"])){
+                echo '<a class="nav-link" href="logout.php" style="font-size: 20px;"> Log out</a>';
+            }
+            else
+            {
+                echo '<a class="nav-link" href="login.php" style="font-size: 20px;"> Log in</a>';
+            }
+            ?>
 		</ul>
 		</div>
   
