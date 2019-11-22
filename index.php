@@ -25,19 +25,24 @@ if (!$conn) {
     <title>Hello, world!</title>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">
-            <?php 
-            if(isset($_SESSION["username"]))
-            {
-                echo $_SESSION["username"];
-            }
-            else
-            {
-                echo "Navbar";
-            }
-            ?>
-        </span>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+		<a class="navbar-brand" href="index.php" style="font-size: 25px;"><img src="Bilder/QTicon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">  Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<a class="nav-link" href="movies.php" style="font-size: 20px;">Movies</a>
+			<a class="nav-link" href="orders.php" style="font-size: 20px;">Order</a>
+		</ul>
+		</div>
+  
+		<ul class="navbar-nav">
+			<a class="nav-link" href="basket.php" style="font-size: 20px;">Shopping Basket</a>
+			<a class="nav-link" href="login.php" style="font-size: 20px;"> Log in</a>
+		</ul>
+		</div>
+  
     </nav>
     
     <div class="jumbotron jumbotron-fluid">

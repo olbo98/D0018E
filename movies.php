@@ -37,24 +37,24 @@ if (!$conn) {
 	</nav>
 </div>-->
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-		<a class="navbar-brand" href="#" style="font-size: 25px;"><img src="QTicon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">  Home</a>
+		<a class="navbar-brand" href="index.php" style="font-size: 25px;"><img src="Bilder/QTicon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">  Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<a class="nav-link" href="http://utbweb.its.ltu.se/~albved-7/Products/test/test.php" style="font-size: 20px;">Movies</a>
-			<a class="nav-link" href="#" style="font-size: 20px;">Order</a>
+			<a class="nav-link" href="movies.php" style="font-size: 20px;">Movies</a>
+			<a class="nav-link" href="orders.php" style="font-size: 20px;">Order</a>
 		</ul>
 		</div>
   
 		<ul class="navbar-nav">
-			<a class="nav-link" href="#" style="font-size: 20px;">Shopping Basket</a>
-			<a class="nav-link" href="#" style="font-size: 20px;"> Log in</a>
+			<a class="nav-link" href="basket.php" style="font-size: 20px;">Shopping Basket</a>
+			<a class="nav-link" href="login.php" style="font-size: 20px;"> Log in</a>
 		</ul>
 		</div>
   
-</nav>
+    </nav>
 <div class="images">
 	<a href="product.php?productID=11"><img class="movies1" src="Bilder/IB.jpg" alt="Movie1" ></a>
 	<a href="product.php?productID=13"><img class="movies2" src="Bilder/pulpfiction.jpg" alt="Movie2"></a>
