@@ -25,17 +25,6 @@ if (!$conn) {
 	<link rel="stylesheet" type="text/css" href="Test.css">
 </head>
 <body>
-
-<!--<div class="container">
-	<nav class="navbar navbar-expand bg-dark navbar-dark fixed-top justify-content-center">
-		<div class="buttons">
-			<button type="button" class="btn btn1 btn-dark btn-lg">Movies</button>
-			<button type="button" class="btn btn-dark btn-lg">Order</button>
-			<button type="button" class="btn btn-dark btn-lg">Shopping Basket</button>
-			<button type="button" class="btn btn-dark btn-lg">Log in</button>
-		</div>
-	</nav>
-</div>-->
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 		<a class="navbar-brand" href="index.php" style="font-size: 25px;"><img src="Bilder/QTicon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">  Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

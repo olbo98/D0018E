@@ -4,10 +4,10 @@ session_start();
 
 include "functions.php";
 
-/*if(!checkUserLoginStatus())
+if(!checkUserLoginStatus())
 {
     header("Location: http://utbweb.its.ltu.se/~olobou-7/shop/login.php");
-}*/
+}
 
 $conn = connectToDB();
 
