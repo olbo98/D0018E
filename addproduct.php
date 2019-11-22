@@ -1,4 +1,5 @@
-<?php 
+<?php
+#Page for adding to shop
 session_start();
 
 $servername = "127.0.0.1";
@@ -11,11 +12,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$query = "SELECT basketID FROM Baskets WHERE basketID=1";
+$query = "SELECT basketID FROM Baskets WHERE basketID = ".$_SESSION["basketID"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 
-$query = "INSERT INTO `basketItems`(`basketID`, `productID`, `quantity`) VALUES(".$row['basketID'].", ".$_POST["productID"]." , 1)";
+$query = "INSERT INTO `basketItems`(`basketID`, `productID`, `quantity`) VALUES(".$_POST['basketID'].", ".$_POST["productID"]." , 1)";
 $conn->query($query);
 
 
