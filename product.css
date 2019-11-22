@@ -8,7 +8,6 @@ body{
 	margin-left:430px;
 	width: 45%;
 	height: 500px;
-
 }
 .movies1{
 	position: absolute;
@@ -20,7 +19,7 @@ body{
 
 .groupie{
 	position:absolute;
-	right:20px;
+	right:50px;
 	margin-top: 140px;
 }
 .pb-cmnt-textarea {
@@ -39,7 +38,7 @@ body{
 	position:absolute;
     font-family: Lato;
     bottom: 0px;
-	right: -550px;
+	right: 80px;
 	height: 10px;
 
 }

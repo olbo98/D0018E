@@ -25,7 +25,7 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 ?>
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="Test.css">
+  
   <meta charset="utf-8">
   <meta <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -74,9 +74,9 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 		<?php
 			if($row['quantity'] > 0){ 
 				echo '<input style="display: none;" name= "productID" type = "text" value='.$row["productID"].'>';
-				echo '<input type="submit" class="btn btn1 btn-dark btn-lg" value="Add to cart">';
+				echo '<input type="submit" class="btn btn1 btn-dark btn-lg" style="width:350px;" value="Add to cart">';
 			}else{
-				echo '<input type="submit" class="btn btn1 btn-dark btn-lg" disabled value="Out of Stock!">';
+				echo '<input type="submit" class="btn btn1 btn-dark btn-lg" style="width:350px;" disabled value="Out of Stock!">';
 			}
 			?>
 		</form>
