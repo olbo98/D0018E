@@ -1,0 +1,27 @@
+.container {
+  position: realatives;
+  text-align: center;
+  color: white;
+}
+
+.body{
+    background-color: darkgray;
+}
+
+.centered {
+  border-color: none;
+  color: white;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button{
+    width = 10px;
+    
+}
+
+.navbar{
+    margin-bottom: 0;
+}
