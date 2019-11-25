@@ -67,6 +67,7 @@ CREATE TABLE Pictures(
     picture VARCHAR(255) NOT NULL, 
     productID INT NOT NULL, 
     description VARCHAR(255) NOT NULL,
+    link VARCHAR(255) NOT NULL,
     PRIMARY KEY(pictureID),
     FOREIGN KEY(productID) REFERENCES Products(productID)
 );
@@ -91,7 +92,8 @@ VALUES
     ('killbilltrailer.PNG',12, 'Killbilltrailer pic in product page'),
     ('pulpfiction.jpg',13, 'Pulpfiction pic in product page'),
     ('pulpfictiontrailer.PNG',13, 'Pulpfictiontrailer pic in product page');
-                          
-                          
+
+
+
                           
                           
