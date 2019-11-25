@@ -23,7 +23,7 @@ if (!$conn) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link 
 
-    <title>QT</title>
+    <title></title>
   </head>
   <body class ="text-center">
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
@@ -59,8 +59,8 @@ if (!$conn) {
     <h1 class="cover-heading">Thank you for your order!</h1>
     <p class="lead">Thank you for your order. Your shipping is being prepared by Quentin himself!</p>
     <p class="lead">
-         <a href="#" class="btn btn-lg btn-secondary">See your orders</a>
-      <a href="#" class="btn btn-lg btn-secondary">Go back to Startpage</a>
+         <a href="orders.php" class="btn btn-lg btn-secondary">See your orders</a>
+      <a href="index.php" class="btn btn-lg btn-secondary">Go to startpage</a>
     </p>
          </div>
   </main>
