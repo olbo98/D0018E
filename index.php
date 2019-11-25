@@ -12,6 +12,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$query = "SELECT productID from Products WHERE name = 'Once upon a time in hollywood'";
+$result = $conn->query($query);
+$movieID = $result->fetch_assoc();
+
 ?>
 <html lang="en">
   <head>
@@ -76,13 +80,13 @@ if (!$conn) {
 		</div>
   
     </nav>
-    
+      
     
   <div class="row">
       <img src="https://on-media.fr/wp-content/uploads/2019/09/once-upon-a-time-in-hollywood-1200-1200-675-675-crop-000000.jpg" alt="Once upon a time in Hollywood" style="width:100%;">
       <div class="centered">
           <h1 class="row">ONCE UPON A TIME IN HOLLYWOOD</h1> 
-          <p><a class="btn btn-secondary" href="#" role="button">BUY NOW &raquo;</a></p>
+          <p><a class="btn btn-secondary" href=<?php echo "product.php?productID=".$movieID["productID"] ?> role="button">BUY NOW &raquo;</a></p>
       </div>
       </div>
    
@@ -92,9 +96,9 @@ if (!$conn) {
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <h3 class="mb-0">PRODUCTS</h3>
+          <h3 class="mb-0">MOVIES</h3>
           <p class="card-text mb-auto">Tarantino's films have garnered both critical and commercial success as well as a dedicated cult-following. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">GO TO PRODUCT PAGE &raquo;</a></p>
+          <p><a class="btn btn-secondary center" href="movies.php" role="button">SHOP AMAZING MOVIES &raquo;</a></p>
       
         </div>
         <div class="col-auto d-none d-lg-block">
