@@ -6,7 +6,7 @@ include "functions.php";
 
 if(!checkUserLoginStatus())
 {
-    header("Location: product.php");
+    header("Location: login.php");
 }
 
 
