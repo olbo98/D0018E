@@ -23,5 +23,5 @@ $conn->query($query);
 $query = "UPDATE Products SET quantity = quantity - 1 WHERE productID = ".$_POST["productID"]." and quantity > 0 ";
 $conn->query($query);
 
-header("Location: http://utbweb.its.ltu.se/~albved-7/Webbpage/product.php?productID=".$_POST["productID"]);
+header("Location: product.php?productID=".$_POST["productID"]);
 ?>
