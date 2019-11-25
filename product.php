@@ -68,7 +68,7 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
     </nav>
 
 <div class="moviename">
-	<?php echo $row['name']; ?></h1>
+	<?php echo $row['name']; ?>
 </div>
 
 
@@ -93,8 +93,8 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 </div>
 
 <div class="images">
-<a href="#"><img class="movies1" src= <?php echo "Bilder/".$row2[0]["picture"]; ?> alt="Movie1"></a>
-<a href="https://www.youtube.com/watch?v=-2cRY4p7KIk"><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a>
+	<a href="#"><img class="movies1" src= <?php echo "Bilder/".$row2[0]["picture"]; ?> alt="Movie1"></a>
+	<a href="https://www.youtube.com/watch?v=-2cRY4p7KIk"><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a>
 </div>
 
 <div class="description">
@@ -107,9 +107,8 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
     <div class="form-group">
       <textarea placeholder= "Write your comment here" class="form-control" rows="8" id="comment"></textarea>
 	  <button class="btn btn-primary" type="button">Comment</button>
-    </div>
- </form>
-</div>
+    </div> 
+</form>
 
 </body>
 </html>
