@@ -2,6 +2,14 @@
 #Page for adding to shop
 session_start();
 
+include "functions.php";
+
+if(!checkUserLoginStatus())
+{
+    header("Location: product.php");
+}
+
+
 $servername = "127.0.0.1";
 $username = "98102221";
 $password = "98102221";

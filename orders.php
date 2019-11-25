@@ -6,7 +6,7 @@ include "functions.php";
 
 if(!checkUserLoginStatus())
 {
-    header("Location: http://utbweb.its.ltu.se/~olobou-7/shop/login.php");
+    header("Location: login.php");
 }
 
 $conn = connectToDB();
