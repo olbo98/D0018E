@@ -1,49 +1,48 @@
 body{
-	background-color: darkgray;
+	background-color: lightgray;
+}
+
+.moviename{
+	margin-left:10px;
+	font-size:50px;
 }
 
 .trailer1{
-	position: absolute;
-	margin-top: 30px;
-	margin-left:430px;
-	width: 45%;
-	height: 500px;
+	margin-right: 20px;	
+	left: auto;
+	
 }
+
 .movies1{
-	position: absolute;
-	margin-top: 30px;
+	margin-top: 15px;
 	margin-left: 10px;
 	width: 400px;
-	height: 500px;
+	height: auto;
+	
 }
-
+.images img{
+	background-color:black;
+	
+}
 .groupie{
-	position:absolute;
-	right:50px;
-	margin-top: 140px;
-}
-.pb-cmnt-textarea {
-    resize: none;
-    padding: 20px;
-    height: 230px;
-    width: 100%;
-    border: 10px solid #F2F2F2;
-}
-.form-inline{
 	float:right;
-	width: 25%;
+	margin-right:40px;
+	margin-top: 150px;
+	height: auto;
 }
 
-.pb-cmnt-container {
-	position:absolute;
-    font-family: Lato;
-    bottom: 0px;
-	right: 80px;
-	height: 10px;
-
+.form-group{
+	width: 40%;
+	margin-left: 10px;
+	margin-top: 5%;
+	
 }
-.text-container{
-	position:absolute;
-	bottom:0px;
-	height: 10px;
+.form-group button{
+	margin-top: 10px;
+	float:right;
+	width: 40%;
+}
+.description{
+	margin-top: -90px;
+	text-align:center;
 }

@@ -67,12 +67,11 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
   
     </nav>
 
-<h1><?php echo $row['name'] ?></h1>
-
-<div class="images">
-<a href="#"><img class="movies1" src= <?php echo "Bilder/".$row2[0]["picture"]; ?> alt="Movie1"></a>
-<a href="https://www.youtube.com/watch?v=-2cRY4p7KIk"><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a>
+<div class="moviename">
+	<?php echo $row['name']; ?></h1>
 </div>
+
+
 <div class="groupie">
 	<div class="rate">Star rating:</div><br>
 	<div class="price">Priceeee: <?php echo $row["price"]; ?> </div><br>
@@ -92,26 +91,24 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 		
 	</div>
 </div>
-<br><br><br><br>
 
-<div class="container pb-cmnt-container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-6">
-            <div class="panel panel-info">
-                <div class="panel-body">
-                    <textarea placeholder="Write your comment here!" class="pb-cmnt-textarea"></textarea>
-                    <form class="form-inline">
-                        <button class="btn btn-primary pull-right" type="button">Comment</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="images">
+<a href="#"><img class="movies1" src= <?php echo "Bilder/".$row2[0]["picture"]; ?> alt="Movie1"></a>
+<a href="https://www.youtube.com/watch?v=-2cRY4p7KIk"><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a>
 </div>
-<div class="container text-container">
-<p>
-<?php echo $row["description"];?>
-</p>
+
+<div class="description">
+	<p><?php echo $row["description"];?>
+	</p>
+
+</div>
+
+<form>
+    <div class="form-group">
+      <textarea placeholder= "Write your comment here" class="form-control" rows="8" id="comment"></textarea>
+	  <button class="btn btn-primary" type="button">Comment</button>
+    </div>
+ </form>
 </div>
 
 </body>
