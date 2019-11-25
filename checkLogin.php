@@ -20,13 +20,13 @@ if($result->num_rows == 0)
 {
     echo "login failed";
     session_destroy();
-    header("Location: http://utbweb.its.ltu.se/~olobou-7/shop/login.php");
+    header("Location: login.php");
 }
 else
 {
     $_SESSION["username"] = $username;
     $_SESSION["userID"] = $row["userID"];
     $_SESSION["basketID"] = $row2["basketID"];
-    header("Location: http://utbweb.its.ltu.se/~olobou-7/shop/index.php");
+    header("Location: index.php");
 }
 ?>

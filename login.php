@@ -3,7 +3,7 @@
 session_start();
 if(isset($_SESSION["username"]))
 {
-    header("Location: http://utbweb.its.ltu.se/~olobou-7/shop/index.php");
+    header("Location: index.php");
 }
 ?>
 <html lang="en">
