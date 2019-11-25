@@ -1,21 +1,21 @@
 <?php
 session_start();
+$servername = "127.0.0.1";
+$username = "98102221";
+$password = "98102221";
+$dbname = "db98102221";
 
-include "functions.php";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-$conn = connectToDB();
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$query = "SELECT * FROM Users WHERE Username ='".$username."' AND Password ='".$password."'";
+$query = "SELECT Username, Password FROM Users WHERE Username ='".$username."' AND Password ='".$password."'";
 $result = $conn->query($query);
-$row = $result->fetch_assoc();
-
-$query = "SELECT basketID FROM Baskets WHERE userID=".$row["userID"];
-$result = $conn->query($query);
-$row2 = $result->fetch_assoc();
-
 if($result->num_rows == 0)
 {
     echo "login failed";
@@ -25,8 +25,6 @@ if($result->num_rows == 0)
 else
 {
     $_SESSION["username"] = $username;
-    $_SESSION["userID"] = $row["userID"];
-    $_SESSION["basketID"] = $row2["basketID"];
     header("Location: http://utbweb.its.ltu.se/~olobou-7/shop/index.php");
 }
 ?>
