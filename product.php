@@ -94,7 +94,8 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 
 <div class="images">
 	<a href="#"><img class="movies1" src= <?php echo "Bilder/".$row2[0]["picture"]; ?> alt="Movie1"></a>
-	 <a href="<?php echo $row["link"]?>" target="_blank" ><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a>
+	<!-- <a href="<?php echo $row["link"]?>" target="_blank" ><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a> -->
+	 <iframe class="trailer1" src="<?php echo $row["link"]?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="description">
