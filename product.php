@@ -14,12 +14,15 @@ if (!$conn) {
 
 $query = "SELECT * FROM Products WHERE productID =".$_GET['productID'];
 $query2 = "SELECT picture FROM Pictures WHERE productID= ".$_GET['productID'];
+$query3 = "SELECT * FROM Comments WHERE productID =".$_GET['productID'];
 
 $result = $conn->query($query);  
 $result2 = $conn->query($query2);
+$result3 = $conn->query($query3);
 
 $row = $result->fetch_assoc();
 $row2 = $result2->fetch_all(MYSQLI_ASSOC);
+$row3 = $result3->fetch_assoc();
 
 
 
@@ -104,12 +107,15 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 
 </div>
 
-<form>
+
+<form action="postcomment.php" method="post">
     <div class="form-group">
-      <textarea placeholder= "Write your comment here" class="form-control" rows="8" id="comment"></textarea>
-	  <button class="btn btn-primary" type="button">Comment</button>
+      <textarea placeholder= "Write your comment here" class="form-control" name = "commentText" rows="8"></textarea>
+	  <input style="display: none;" name= "productID" type = "text" value=<?php echo $row3["productID"];?>>
+	  <input class="btn btn-primary" type="submit" value="Comment">
     </div> 
 </form>
+
 
 </body>
 </html>
