@@ -1,5 +1,7 @@
 <!doctype html>
 <?php
+include "functions.php";
+
 session_start();
 $servername = "127.0.0.1";
 $username = "98102221";
@@ -11,6 +13,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+if(!checkUserLoginStatus()){
+    header("Location: login.php");
+}
+
+$querySelectProductsFromBasket = "SELECT basketItems.quantity, Products.* FROM (basketItems INNER JOIN Products ON basketItems.productID = Products.productID) WHERE basketItems.basketID IN (SELECT basketID FROM Baskets WHERE userID =".$_SESSION["userID"].")";
+
+$result = $conn->query($querySelectProductsFromBasket);
 
 ?>
 <html lang="en">
@@ -99,6 +109,42 @@ if (!$conn) {
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
+        
+                    <?php
+                        while($row=$result->fetch_assoc()){
+                            echo '<tbody>
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin">'.$row["name"].'</h4>
+										<p>'.$row["description"].'</p>
+									</div>
+								</div>
+							</td>
+							<td data-th="Price">'.$row["price"].'</td>
+							<td data-th="Quantity">
+								<input type="number" class="form-control text-center" value="1">
+							</td>
+							<td data-th="Subtotal" class="text-center">1.99</td>
+							<td class="actions" data-th="">
+								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="visible-xs">
+						</tr>
+						<tr>
+							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+						</tr>
+					</tfoot>';
+                        }
+                    ?>
 				</table>
 </div>
 
