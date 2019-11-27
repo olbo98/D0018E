@@ -122,23 +122,21 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 </form>
 
 
-<div class="commentsection">
+<div class="commentS">
+	<p class = "solid">
 	<?php
 	
 	while($row4=$result4->fetch_assoc()){
-		$user = $row4['userID'];
+		//$user = $row4['userID'];
 		$username = $row4['username'];
 		$comments = $row4['commentText'];
-		$date = date("Y/m/d");
+		$date = $row4['date'];
 		
 		
-		echo "$user - $username - $comments----$date<br>";
-				
+		 echo "$username - $date <br>$comments<br><br>"; 
 	}
-		
-		
 	?>
-	
+	</p>
 </div>
 
 
