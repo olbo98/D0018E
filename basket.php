@@ -21,6 +21,7 @@ if(!checkUserLoginStatus()){
 $querySelectProductsFromBasket = "SELECT basketItems.quantity, Products.productID, Products.name, Products.price, Products.description FROM (basketItems INNER JOIN Products ON basketItems.productID = Products.productID) WHERE basketItems.basketID IN (SELECT basketID FROM Baskets WHERE userID =".$_SESSION["userID"].")";
 
 $result = $conn->query($querySelectProductsFromBasket);
+$totalPrice = 0;
 
 ?>
 <html lang="en">
@@ -82,7 +83,7 @@ $result = $conn->query($querySelectProductsFromBasket);
 						<tr>
 							<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+									<!--<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>--->
 									<div class="col-sm-10">
 										<h4 class="nomargin">Product 1</h4>
 										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
@@ -91,7 +92,7 @@ $result = $conn->query($querySelectProductsFromBasket);
 							</td>
 							<td data-th="Price">$1.99</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
+								<input type="number" class="form-control text-center" value="1" disabled>
 							</td>
 							<td data-th="Subtotal" class="text-center">1.99</td>
 							<td class="actions" data-th="">
@@ -101,6 +102,9 @@ $result = $conn->query($querySelectProductsFromBasket);
                         
                         <?php
                         while($row=$result->fetch_assoc()){
+                            $subTotal = $row["quantity"] * $row["price"];
+                            $totalPrice += $subTotal;
+                            
                             echo '
 						<tr>
 							<td data-th="Product">
@@ -112,12 +116,11 @@ $result = $conn->query($querySelectProductsFromBasket);
 									</div>
 								</div>
 							</td>
-							<td data-th="Price">'.$row["price"].'</td>
+							<td data-th="Price">'.$row["price"].'kr</td>
 							<td data-th="Quantity">
-                                <p>'.$row["quantity"].'</p>
-								<!---<input type="number" class="form-control text-center" value="1">--->
+								<input type="number" class="form-control text-center" value='.$row["quantity"].' disabled>
 							</td>
-							<td data-th="Subtotal" class="text-center">1.99</td>
+							<td data-th="Subtotal" class="text-center">'.$subTotal.'kr</td>
 							<td class="actions" data-th="">
 								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
 							</td>
@@ -131,7 +134,7 @@ $result = $conn->query($querySelectProductsFromBasket);
 						<tr>
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+							<td class="hidden-xs text-center"><strong><?php echo $totalPrice."kr"; ?></strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
