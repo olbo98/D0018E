@@ -18,7 +18,7 @@ if(!checkUserLoginStatus()){
     header("Location: login.php");
 }
 
-$querySelectProductsFromBasket = "SELECT basketItems.quantity, Products.* FROM (basketItems INNER JOIN Products ON basketItems.productID = Products.productID) WHERE basketItems.basketID IN (SELECT basketID FROM Baskets WHERE userID =".$_SESSION["userID"].")";
+$querySelectProductsFromBasket = "SELECT basketItems.quantity, Products.productID, Products.name, Products.price, Products.description FROM (basketItems INNER JOIN Products ON basketItems.productID = Products.productID) WHERE basketItems.basketID IN (SELECT basketID FROM Baskets WHERE userID =".$_SESSION["userID"].")";
 
 $result = $conn->query($querySelectProductsFromBasket);
 
@@ -98,21 +98,10 @@ $result = $conn->query($querySelectProductsFromBasket);
 								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
 							</td>
 						</tr>
-					</tbody>
-					<tfoot>
-						<tr class="visible-xs">
-						</tr>
-						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-						</tr>
-					</tfoot>
-        
-                    <?php
+                        
+                        <?php
                         while($row=$result->fetch_assoc()){
-                            echo '<tbody>
+                            echo '
 						<tr>
 							<td data-th="Product">
 								<div class="row">
@@ -125,13 +114,16 @@ $result = $conn->query($querySelectProductsFromBasket);
 							</td>
 							<td data-th="Price">'.$row["price"].'</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
+                                <p>'.$row["quantity"].'</p>
+								<!---<input type="number" class="form-control text-center" value="1">--->
 							</td>
 							<td data-th="Subtotal" class="text-center">1.99</td>
 							<td class="actions" data-th="">
 								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
 							</td>
-						</tr>
+						</tr>';
+                        }
+                    ?>
 					</tbody>
 					<tfoot>
 						<tr class="visible-xs">
@@ -142,9 +134,7 @@ $result = $conn->query($querySelectProductsFromBasket);
 							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
-					</tfoot>';
-                        }
-                    ?>
+					</tfoot>
 				</table>
 </div>
 
