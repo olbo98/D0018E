@@ -13,16 +13,18 @@ if (!$conn) {
 }
 
 $query = "SELECT * FROM Products WHERE productID =".$_GET['productID'];
-$query2 = "SELECT picture FROM Pictures WHERE productID= ".$_GET['productID'];
+$query2 = "SELECT * FROM Pictures WHERE productID= ".$_GET['productID'];
 $query3 = "SELECT * FROM Comments WHERE productID =".$_GET['productID'];
+
 
 $result = $conn->query($query);  
 $result2 = $conn->query($query2);
 $result3 = $conn->query($query3);
 
+
 $row = $result->fetch_assoc();
 $row2 = $result2->fetch_all(MYSQLI_ASSOC);
-$row3 = $result3->fetch_assoc();
+
 
 
 
@@ -97,8 +99,8 @@ $row3 = $result3->fetch_assoc();
 
 <div class="images">
 	<a href="#"><img class="movies1" src= <?php echo "Bilder/".$row2[0]["picture"]; ?> alt="Movie1"></a>
-	<!-- <a href="<?php echo $row["link"]?>" target="_blank" ><img class="trailer1" src= <?php echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a> -->
-	 <iframe class="trailer1" src="<?php echo $row["link"]?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<!-- <a href="<?php// echo $row["link"]?>" target="_blank" ><img class="trailer1" src= <?php //echo "Bilder/".$row2[1]["picture"]; ?> alt="Trailer1"></a> -->
+	 <iframe class="trailer1" src="<?php echo $row2[1]["link"]?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 <div class="description">
@@ -110,11 +112,33 @@ $row3 = $result3->fetch_assoc();
 
 <form action="postcomment.php" method="post">
     <div class="form-group">
-      <textarea placeholder= "Write your comment here" class="form-control" name = "commentText" rows="8"></textarea>
-	  <input style="display: none;" name= "productID" type = "text" value=<?php echo $row3["productID"];?>>
+      <textarea maxlength = "255" placeholder= "Write your comment here" class="form-control" name = "commentText" rows="8"></textarea>
+	  <input style="display: none;" name= "productID2" type = "text" value=<?php echo $row["productID"];?>>
 	  <input class="btn btn-primary" type="submit" value="Comment">
     </div> 
 </form>
+
+
+<div class="commentsection">
+	<?php
+	if(isset($_GET['error'])){
+			
+		echo "<br>255 character limit!";
+	}	
+	while($row5=$result3->fetch_assoc()){
+		$user = $row5['userID'];
+		$username = $_SESSION['username'];
+		$comments = $row5['commentText'];
+		$date = date("Y/m/d");
+		
+		echo "$user - $username - $comments----$date<br>";
+				
+	}
+		
+		
+	?>
+	
+</div>
 
 
 </body>

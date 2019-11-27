@@ -25,10 +25,12 @@ $result = $conn->query($query);
 $row = $result->fetch_assoc();
 
 $date = date("Y/m/d");
-
-$query = "INSERT INTO `Comments`(`userID`, `date`, `commentText`, `productID`)VALUES(".$_SESSION['userID'].", '".$date."', '".$_POST['commentText']."', ".$_POST["productID"].")";
+	
+$query = "INSERT INTO `Comments`(`userID`, `date`, `commentText`, `productID`)VALUES(".$_SESSION['userID'].", '".$date."', '".$_POST['commentText']."', ".$_POST["productID2"].")";
 $conn->query($query);
+header("Location: product.php?productID=".$_POST["productID2"]);
 
-header("Location: product.php?productID=".$_POST["productID"]);
+
+
 
 ?>
