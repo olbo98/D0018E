@@ -20,11 +20,16 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$query = "SELECT basketID FROM Baskets WHERE basketID = ".$_SESSION["basketID"];
+$query = "SELECT COUNT(productID) FROM basketItems WHERE productID =".$_POST["productID"]." AND basketID =".$_SESSION["basketID"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
 
-$query = "INSERT INTO `basketItems`(`basketID`, `productID`, `quantity`) VALUES(".$_SESSION['basketID'].", ".$_POST["productID"]." , 1)";
+if($row["COUNT(productID)"] > 0){
+    $query = "UPDATE basketItems SET quantity = quantity + 1 WHERE productID=".$_POST["productID"]." AND basketID=".$_SESSION["basketID"];
+}else{
+    $query = "INSERT INTO `basketItems`(`basketID`, `productID`, `quantity`) VALUES(".$_SESSION['basketID'].", ".$_POST["productID"]." , 1)";
+}
+
 $conn->query($query);
 
 
