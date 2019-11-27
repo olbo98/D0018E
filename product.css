@@ -25,10 +25,7 @@ body{
 	height: auto;
 	
 }
-.images img{
 
-	
-}
 .groupie{
 	float:right;
 	margin-right:40px;
@@ -51,4 +48,10 @@ body{
 .description{
 	margin-top: -130px;
 	text-align:center;
+}
+
+.commentsection{
+	float:right;
+	margin-right: 40px;
+	margin-bottom: 10px;
 }

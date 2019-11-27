@@ -15,11 +15,14 @@ if (!$conn) {
 $query = "SELECT * FROM Products WHERE productID =".$_GET['productID'];
 $query2 = "SELECT * FROM Pictures WHERE productID= ".$_GET['productID'];
 $query3 = "SELECT * FROM Comments WHERE productID =".$_GET['productID'];
+$query4 = "SELECT Comments.*, Users.username FROM (Comments INNER JOIN Users ON Comments.userID = Users.userID)";
 
 
 $result = $conn->query($query);  
 $result2 = $conn->query($query2);
 $result3 = $conn->query($query3);
+$result4 = $conn->query($query4);
+
 
 
 $row = $result->fetch_assoc();
@@ -121,15 +124,13 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 
 <div class="commentsection">
 	<?php
-	if(isset($_GET['error'])){
-			
-		echo "<br>255 character limit!";
-	}	
-	while($row5=$result3->fetch_assoc()){
-		$user = $row5['userID'];
-		$username = $_SESSION['username'];
-		$comments = $row5['commentText'];
+	
+	while($row4=$result4->fetch_assoc()){
+		$user = $row4['userID'];
+		$username = $row4['username'];
+		$comments = $row4['commentText'];
 		$date = date("Y/m/d");
+		
 		
 		echo "$user - $username - $comments----$date<br>";
 				
