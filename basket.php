@@ -122,7 +122,7 @@ $totalPrice = 0;
 							</td>
 							<td data-th="Subtotal" class="text-center">'.$subTotal.'kr</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"><a href="removeproduct?productID='.$row["productID"].'"></i></a></button>								
 							</td>
 						</tr>';
                         }
