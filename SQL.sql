@@ -94,6 +94,12 @@ VALUES
     ('pulpfictiontrailer.PNG',13, 'Pulpfictiontrailer pic in product page');
 
 
-
+INSERT INTO `Pictures`(`picture`, `link`)
+VALUES 
+    ('IBtrailer.PNG', 'https://www.youtube.com/embed/-2cRY4p7KIk'),
+    ('djangotrailer.PNG', 'https://www.youtube.com/embed/0fUCuvNlOCg'),
+    ('hollywoodtrailer.PNG', 'https://www.youtube.com/embed/Scf8nIJCvs4'),
+    ('killbilltrailer.PNG', 'https://www.youtube.com/embed/7kSuas6mRpk'),
+    ('pulpfictiontrailer.PNG', 'https://www.youtube.com/embed/Scf8nIJCvs4');
                           
                           
