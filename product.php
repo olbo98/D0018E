@@ -14,21 +14,32 @@ if (!$conn) {
 
 $query = "SELECT * FROM Products WHERE productID =".$_GET['productID'];
 $query2 = "SELECT * FROM Pictures WHERE productID= ".$_GET['productID'];
-$query3 = "SELECT * FROM Comments WHERE productID =".$_GET['productID'];
+
 $query4 = "SELECT Comments.*, Users.username FROM (Comments INNER JOIN Users ON Comments.userID = Users.userID)";
+$query5 = "SELECT * FROM Ratings WHERE productID =".$_GET['productID'];
+
+$query6 = "SELECT Products.*, AVG(Ratings.rating) as avgRating
+			FROM Products
+			LEFT JOIN Ratings
+			ON Products.productID = Ratings.productID
+			WHERE Products.productID =".$_GET['productID'];
 
 
 $result = $conn->query($query);  
 $result2 = $conn->query($query2);
-$result3 = $conn->query($query3);
-$result4 = $conn->query($query4);
 
+$result4 = $conn->query($query4);
+$result5 = $conn->query($query5);
+$result6 = $conn->query($query6);
 
 
 $row = $result->fetch_assoc();
 $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 
+$row5 = $result5->fetch_assoc();
+$row6 = $result6->fetch_assoc();
 
+//$avgRating = $row6['avgRating'];
 
 
 ?>
@@ -81,7 +92,7 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 
 
 <div class="groupie">
-	<div class="rate">Star rating:</div><br>
+	<div class="rate">Movie rating: <?php echo round($row6['avgRating']); ?>/5</div><br>
 	<div class="price">Priceeee: <?php echo $row["price"]; ?> </div><br>
 	<div class="stock">Leeeeeft: <?php echo $row["quantity"]; ?></div><br><br>
 	<div class="buttons">
@@ -120,6 +131,16 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 	  <input class="btn btn-primary" type="submit" value="Comment">
     </div> 
 </form>
+
+<div class="rate" style="margin-left: 20px;">
+<!--<form action="rate.php" method="post"> -->
+	Rate this:
+	<?php foreach(range(1,5) as $row5['rating']):?>
+		<a href="rate.php?productID=<?php echo $_GET['productID']?>&rating=<?php echo $row5['rating']; ?> "><?php echo $row5['rating']; ?></a>
+		
+	<?php endforeach; ?>
+<!--</form>-->
+</div>
 
 
 <div class="commentS">
