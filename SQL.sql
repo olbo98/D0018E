@@ -101,5 +101,13 @@ VALUES
     ('hollywoodtrailer.PNG', 'https://www.youtube.com/embed/Scf8nIJCvs4'),
     ('killbilltrailer.PNG', 'https://www.youtube.com/embed/7kSuas6mRpk'),
     ('pulpfictiontrailer.PNG', 'https://www.youtube.com/embed/Scf8nIJCvs4');
-                          
-                          
+
+CREATE TABLE Ratings( 
+    userID INT NOT NULL,
+    productID INT NOT NULL,
+    rating INT NOT NULL, 
+    FOREIGN KEY(userID) REFERENCES Users(userID), 
+    FOREIGN KEY(productID) REFERENCES Products(productID) 
+    
+ );
+                      
