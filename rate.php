@@ -6,8 +6,8 @@ include "functions.php";
 if(!checkUserLoginStatus())
 {
     header("Location: login.php");
+	exit();
 }
-
 
 $servername = "127.0.0.1";
 $username = "98102221";

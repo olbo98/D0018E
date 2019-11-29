@@ -15,7 +15,7 @@ if (!$conn) {
 $query = "SELECT * FROM Products WHERE productID =".$_GET['productID'];
 $query2 = "SELECT * FROM Pictures WHERE productID= ".$_GET['productID'];
 
-$query4 = "SELECT Comments.*, Users.username FROM (Comments INNER JOIN Users ON Comments.userID = Users.userID)";
+$query4 = "SELECT Comments.*, Users.username FROM (Comments INNER JOIN Users ON Comments.userID = Users.userID) WHERE productID =".$_GET['productID'];
 $query5 = "SELECT * FROM Ratings WHERE productID =".$_GET['productID'];
 
 $query6 = "SELECT Products.*, AVG(Ratings.rating) as avgRating
@@ -23,6 +23,7 @@ $query6 = "SELECT Products.*, AVG(Ratings.rating) as avgRating
 			LEFT JOIN Ratings
 			ON Products.productID = Ratings.productID
 			WHERE Products.productID =".$_GET['productID'];
+			
 
 
 $result = $conn->query($query);  
@@ -134,16 +135,16 @@ $row6 = $result6->fetch_assoc();
 
 <div class="rate" style="margin-left: 20px;">
 <!--<form action="rate.php" method="post"> -->
-	Rate this:
-	<?php foreach(range(1,5) as $row5['rating']):?>
+	Rate this movie:
+	<?php foreach(range(1,5) as $row5['rating']):?>		
 		<a href="rate.php?productID=<?php echo $_GET['productID']?>&rating=<?php echo $row5['rating']; ?> "><?php echo $row5['rating']; ?></a>
-		
 	<?php endforeach; ?>
+	
 <!--</form>-->
 </div>
 
 
-<div class="commentS">
+<div class="commentS" style="font-size: 17px;">
 	<p class = "solid">
 	<?php
 	
