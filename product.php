@@ -97,8 +97,8 @@ $row6 = $result6->fetch_assoc();
 
 <div class="groupie">
 	<div class="rate">Movie rating: <?php echo round($row6['avgRating']); ?>/5</div><br>
-	<div class="price">Priceeee: <?php echo $row["price"]; ?> </div><br>
-	<div class="stock">Leeeeeft: <?php echo $row["quantity"]; ?></div><br><br>
+	<div class="price">Price: $<?php echo $row["price"]; ?></div><br>
+	<div class="stock">Left: <?php echo $row["quantity"]; ?></div><br><br>
 	<div class="buttons">
 		<!--<a href="addproduct.php"><button type="button" class="btn btn1 btn-dark btn-lg">Add to shoppingbag</button></a>-->
 		<form action = "addproduct.php" method ="post">
