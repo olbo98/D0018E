@@ -27,11 +27,16 @@ $quantity = $row["quantity"];
 $remove = 'DELETE FROM basketItems WHERE basketID ='.$_SESSION["basketID"].' AND productID = '.$_GET["productID"];
 
 if(!$conn->query($remove)){
-    echo "fail stupid bitch"
+    echo "fail stupid bitch";
 }
 
 
 $add = 'UPDATE Products SET quantity = quantity + '.$quantity.' WHERE productID = '.$_GET["productID"];
+
+if(!$conn->query($add)){
+    echo "fail stupid bitch2";
+}
+
 
 header("Location: basket.php");
 ?>

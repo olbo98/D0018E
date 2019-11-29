@@ -46,7 +46,7 @@ $totalPrice = 0;
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<a class="nav-link" href="moviepage.php" style="font-size: 20px;">Movies</a>
+			<a class="nav-link" href="movies.php" style="font-size: 20px;">Movies</a>
 			<a class="nav-link" href="orders.php" style="font-size: 20px;">Order</a>
 		</ul>
 		</div>
@@ -80,25 +80,6 @@ $totalPrice = 0;
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-									<!--<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>--->
-									<div class="col-sm-10">
-										<h4 class="nomargin">Product 1</h4>
-										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-									</div>
-								</div>
-							</td>
-							<td data-th="Price">$1.99</td>
-							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1" disabled>
-							</td>
-							<td data-th="Subtotal" class="text-center">1.99</td>
-							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-							</td>
-						</tr>
                         
                         <?php
                         while($row=$result->fetch_assoc()){
@@ -109,7 +90,6 @@ $totalPrice = 0;
 						<tr>
 							<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
 									<div class="col-sm-10">
 										<h4 class="nomargin">'.$row["name"].'</h4>
 										<p>'.$row["description"].'</p>
@@ -122,7 +102,7 @@ $totalPrice = 0;
 							</td>
 							<td data-th="Subtotal" class="text-center">'.$subTotal.'kr</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"><a href="removeproduct?productID='.$row["productID"].'"></i></a></button>								
+								<a href="removeproduct.php?productID='.$row["productID"].'"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>								
 							</td>
 						</tr>';
                         }
@@ -132,10 +112,10 @@ $totalPrice = 0;
 						<tr class="visible-xs">
 						</tr>
 						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td><a href="movies.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong><?php echo $totalPrice."kr"; ?></strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="buypage.php" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>
