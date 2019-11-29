@@ -3,8 +3,9 @@
     width: 60%; 
     max-width:100%; 
     margin: 0 auto; 
-    background-color: brown;
+    background-color: #343a40;
     padding: 7px 20px;
+    color: #fff;
 }
 
 .order-products
@@ -12,8 +13,8 @@
     width: 50%;
     max-width: 100%;
     margin: 0 auto;
-    background-color: green;
     padding: 7px 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 
 .orderText1
