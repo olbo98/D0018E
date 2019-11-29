@@ -25,10 +25,7 @@ body{
 	height: auto;
 	
 }
-.images img{
 
-	
-}
 .groupie{
 	float:right;
 	margin-right:40px;
@@ -51,4 +48,22 @@ body{
 .description{
 	margin-top: -130px;
 	text-align:center;
+}
+
+.commentS{
+	float:right;
+	margin-right: 60px;
+	margin-left: auto;
+	margin-top: -16.5%;
+	height: auto;
+	width: 50%;
+	
+}
+p.solid{
+	border-style: solid;
+	border-width: thin;
+	padding-top: 17px;
+	padding-right: 17px;
+	padding-left: 17px;
+	
 }
