@@ -5,17 +5,13 @@ $servername = "127.0.0.1";
 $username = "98102221";
 $password = "98102221";
 $dbname = "db98102221";
-
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
 $query = "SELECT productID from Products WHERE name = 'Once upon a time in hollywood'";
 $result = $conn->query($query);
 $movieID = $result->fetch_assoc();
-
 ?>
 <html lang="en">
   <head>
@@ -41,7 +37,6 @@ $movieID = $result->fetch_assoc();
         -ms-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;

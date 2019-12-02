@@ -15,41 +15,27 @@ if(isset($_SESSION["username"]))
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="short icon" href="Bilder/swede.png">
+    <link rel="stylesheet" href="register.css" type="text/css">
     <title>QT</title>
   </head>
   <body style="background-color: #8C8887;">
-    <div class="container" style="margin-top: 10%;">
-        <h1 class="display-4 text-center">Login</h1>
-        
-        <div class="d-flex justify-content-center" style="margin-top: 50px;">
-            <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <form action="checkLogin.php" method="post">
+    <div class="container" style="margin-top: 7%">
+        <h1 class="display-4" style="text-align: center">Login</h1>
+            <div class="shadow-sm p-3 mb-5 bg-white rounded register-form" style="width: 30%; margin: 30px auto; m">
+                <form method="post" action="checkLogin.php">
                     <div class="form-group">
-                        <label for="Username">
+                        <label for="username">
                             Username
                         </label>
-                        
-                        <input type="text" class="form-control" id="Username" aria-describedby="emailHelp" placeholder="Username" name="username" required>
-                        
-                        <small id="emailHelp" class="form-text text-muted">
-                            We'll never share your email with anyone else.
-                        </small>
+                        <input type="email" class="form-control" id="username" name="password" aria-describedby="emailHelp" placeholder="Username" required>
                     </div>
-            
                     <div class="form-group">
-                        <label for="Password">
-                            Password
-                        </label>
-                        
-                        <input type="password" class="form-control" id="Password" placeholder="Password" name="password" required>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                     </div>
-            
-                    <button type="submit" class="btn btn-outline-primary btn-block">
-                        Submit
-                    </button>
+                    <button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
                 </form>
             </div>
-        </div>
     </div>
 
     <!-- Optional JavaScript -->

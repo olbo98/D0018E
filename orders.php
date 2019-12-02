@@ -63,43 +63,45 @@ $resultCountOrders = $conn->query($queryCountOrders);
 		</div>
   
     </nav>
-      
-    <div class="d-flex order-head">
-        <div class="flex-grow-1" style="font-size: 20px;">Order ID</div>
-        <div style="font-size: 20px; padding-right: 50px">Datum</div>
-        <div style="font-size: 20px;">Pris</div>
-    </div>
-    <div class="d-flex order-products">
-        <div class="flex-grow-1" style="font-size: 17px;">Product</div>
-        <div style="font-size: 17px; padding-right: 50px">Quantity</div>
-        <div style="font-size: 17px;">sub-total</div>
-    </div>
-    <div class="d-flex order-products">
-        <div class="orderText1" style="font-size: 17px;">Product</div>
-        <div class="orderText2" style="font-size: 17px;">Quantity</div>
-        <div class="orderText2" style="font-size: 17px;">sub-total</div>
-    </div>
     
+    <div style="padding-top: 3%;">
     <?php
       while($row = $resultCountOrders->fetch_row()){
           
+          $total = 0;
+          
           echo '<div class="d-flex order-head">
-        <div class="flex-grow-1" style="font-size: 20px;">'.$orderRow["orderID"].'</div>
-        <div style="font-size: 20px; padding-right: 50px">'.$orderRow["orderDate"].'</div>
-        <div style="font-size: 20px;">Pris</div>
+        <div class="flex-grow-1" style="font-size: 20px;">Order ID: '.$orderRow["orderID"].'</div>
+        <div style="font-size: 20px; padding-right: 10px">Date: '.$orderRow["orderDate"].'</div>
+    </div>';
+          
+          echo '<div class="d-flex order-products">
+        <div class="orderText1" style="font-size: 17px;">Product</div>
+        <div class="orderText2" style="font-size: 17px;">Quantity</div>
+        <div class="orderText2" style="font-size: 17px;">Sub-total</div>
     </div>';
           
           for($i=0; $i<$row[0]; $i++){
+              $subTotal = $orderRow["quantity"] * $orderRow["price"];
+              $total += $subTotal;
+    
               echo '<div class="d-flex order-products">
         <div class="orderText1" style="font-size: 17px;">'.$orderRow["name"].'</div>
         <div class="orderText2" style="font-size: 17px;">'.$orderRow["quantity"].'</div>
-        <div class="orderText2" style="font-size: 17px;">sub-total</div>
+        <div class="orderText2" style="font-size: 17px;">'.$subTotal.'$</div>
     </div>';
               $orderRow = $resultQueryProductOrder->fetch_assoc();
           }
+          
+          echo '<div class="d-flex order-products">
+        <div class="orderText1" style="font-size: 17px;"></div>
+        <div class="orderText2" style="font-size: 17px;"></div>
+        <div class="orderText2" style="font-size: 17px;"><b>Total: '.$total.'$</b></div>
+    </div>'; 
       }
       
     ?>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
