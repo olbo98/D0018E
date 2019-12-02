@@ -45,7 +45,7 @@ CREATE TABLE basketItems(
 );
 
 CREATE TABLE Orders(
-    orderID INT NOT NULL AUTO_INCREMENT,
+    orderID INT NOT NULL,
     userID INT NOT NULL,
     orderDate DATE NOT NULL,
     orderStatus VARCHAR(255) NOT NULL,
