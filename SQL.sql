@@ -82,15 +82,15 @@ VALUES
     
 INSERT INTO `Pictures`(`picture`, `productID`, `description`,`link`) 
 VALUES 
-    ('IB2.jpg',1,'IB pic in product page'),
+    ('IB2.jpg',1,'IB pic in product page',''),
     ('IBtrailer.PNG',1, 'IBtrailer pic in product page','https://www.youtube.com/embed/-2cRY4p7KIk'),
-    ('django2.jpg',4, 'Django pic in product page'),
+    ('django2.jpg',4, 'Django pic in product page',''),
     ('djangotrailer.PNG',4, 'Djangotrailer pic in product page','https://www.youtube.com/embed/0fUCuvNlOCg'),
-    ('Hollywood2.jpg',5, 'Hollywood pic in product page'),
+    ('Hollywood2.jpg',5, 'Hollywood pic in product page',''),
     ('hollywoodtrailer.PNG',5, 'Hollywoodrailer pic in product page','https://www.youtube.com/embed/Scf8nIJCvs4'),
-    ('killbill2.jpg',2, 'Killbill pic in product page'),       
+    ('killbill2.jpg',2, 'Killbill pic in product page',''),       
     ('killbilltrailer.PNG',2, 'Killbilltrailer pic in product page','https://www.youtube.com/embed/7kSuas6mRpk'),
-    ('pulpfiction.jpg',3, 'Pulpfiction pic in product page'),
+    ('pulpfiction.jpg',3, 'Pulpfiction pic in product page',''),
     ('pulpfictiontrailer.PNG',3, 'Pulpfictiontrailer pic in product page','https://www.youtube.com/embed/Scf8nIJCvs4');
 
 CREATE TABLE Ratings( 
