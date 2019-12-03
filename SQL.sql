@@ -82,16 +82,16 @@ VALUES
     
 INSERT INTO `Pictures`(`picture`, `productID`, `description`) 
 VALUES 
-    ('IB2.jpg',11,'IB pic in product page'),
-    ('IBtrailer.PNG',11, 'IBtrailer pic in product page'),
-    ('django2.jpg',14, 'Django pic in product page'),
-    ('djangotrailer.PNG',14, 'Djangotrailer pic in product page'),
-    ('Hollywood2.jpg',15, 'Hollywood pic in product page'),
-    ('hollywoodtrailer.PNG',15, 'Hollywoodrailer pic in product page'),
-    ('killbill2.jpg',12, 'Killbill pic in product page'),       
-    ('killbilltrailer.PNG',12, 'Killbilltrailer pic in product page'),
-    ('pulpfiction.jpg',13, 'Pulpfiction pic in product page'),
-    ('pulpfictiontrailer.PNG',13, 'Pulpfictiontrailer pic in product page');
+    ('IB2.jpg',1,'IB pic in product page'),
+    ('IBtrailer.PNG',1, 'IBtrailer pic in product page'),
+    ('django2.jpg',4, 'Django pic in product page'),
+    ('djangotrailer.PNG',4, 'Djangotrailer pic in product page'),
+    ('Hollywood2.jpg',5, 'Hollywood pic in product page'),
+    ('hollywoodtrailer.PNG',5, 'Hollywoodrailer pic in product page'),
+    ('killbill2.jpg',2, 'Killbill pic in product page'),       
+    ('killbilltrailer.PNG',2, 'Killbilltrailer pic in product page'),
+    ('pulpfiction.jpg',3, 'Pulpfiction pic in product page'),
+    ('pulpfictiontrailer.PNG',3, 'Pulpfictiontrailer pic in product page');
 
 
 INSERT INTO `Pictures`(`picture`, `link`)
