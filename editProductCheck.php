@@ -1,8 +1,8 @@
 <?php
 session_start();
-/*if($_SESSION["username"] != "admin"){
+if($_SESSION["username"] != "admin" || !isset($_SESSION["username"])){
     header("Location: index.php");
-}*/
+}
 include "functions.php";
 
 $conn = connectToDB();

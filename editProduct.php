@@ -1,6 +1,9 @@
 <!doctype html>
 <?php
 session_start();
+if($_SESSION["username"] != "admin" || !isset($_SESSION["username"])){
+    header("Location: index.php");
+}
 include "functions.php";
 $conn = connectToDB();
 $query = "SELECT productID, name FROM Products";
