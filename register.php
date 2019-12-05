@@ -15,12 +15,12 @@
     <div class="container" style="margin-top: 7%">
         <h1 class="display-4" style="text-align: center">Register</h1>
             <div class="shadow-sm p-3 mb-5 bg-white rounded register-form">
-                <form>
+                <form method="post" action="registerCheck.php">
                     <div class="form-group">
                         <label for="username">
                             Username
                         </label>
-                        <input type="email" class="form-control" id="username" name="password" aria-describedby="emailHelp" placeholder="Username" required>
+                        <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
