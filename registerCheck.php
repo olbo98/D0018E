@@ -14,7 +14,7 @@ $userID = $row["COUNT(userID)"] + 1;
 
 $conn->autocommit(FALSE);
 
-$insertUserQuery = "INSERT INTO Users(username, password) VALUES ('".$username."','".$password."')";
+$insertUserQuery = "INSERT INTO Users(userID, username, password) VALUES (".$userID.",'".$username."','".$password."')";
 $createBasketQuery = "INSERT INTO Baskets(userID) VALUES(".$userID.")";
 
 $conn->query($insertUserQuery);
@@ -26,5 +26,7 @@ if(!$conn->commit()){
 }
 
 $conn->close();
+
+header("Location: index.php");
 
 ?>
