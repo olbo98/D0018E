@@ -57,11 +57,11 @@ if (!$conn) {
   
     </nav>
 <div class="images">
-	<a href="product.php?productID=11"><img class="movies1" src="Bilder/IB.jpg" alt="Movie1" ></a>
-	<a href="product.php?productID=13"><img class="movies2" src="Bilder/pulpfiction.jpg" alt="Movie2"></a>
-	<a href="product.php?productID=12"><img class="movies4" src="Bilder/killbill.jpg" alt="Movie3"></a>
-	<a href="product.php?productID=14"><img class="movies3" src="Bilder/django.jpg" alt="Movie4"></a>
-	<a href="product.php?productID=15"><img class="movies5" src="Bilder/Hollywood.jpg" alt="Movie5"></a>
+	<a href="product.php?productID=1"><img class="movies1" src="Bilder/IB.jpg" alt="Movie1" ></a>
+	<a href="product.php?productID=3"><img class="movies2" src="Bilder/pulpfiction.jpg" alt="Movie2"></a>
+	<a href="product.php?productID=2"><img class="movies4" src="Bilder/killbill.jpg" alt="Movie3"></a>
+	<a href="product.php?productID=4"><img class="movies3" src="Bilder/django.jpg" alt="Movie4"></a>
+	<a href="product.php?productID=5"><img class="movies5" src="Bilder/Hollywood.jpg" alt="Movie5"></a>
 </div>
 
 </body>
