@@ -92,6 +92,12 @@ VALUES
     ('killbilltrailer.PNG',2, 'Killbilltrailer pic in product page','https://www.youtube.com/embed/7kSuas6mRpk'),
     ('pulpfiction.jpg',3, 'Pulpfiction pic in product page',''),
     ('pulpfictiontrailer.PNG',3, 'Pulpfictiontrailer pic in product page','https://www.youtube.com/embed/Scf8nIJCvs4');
+    
+INSERT INTO `Users`(`userID`, `username`, `password`) VALUES 
+    (1,'Elsa','123'),
+    (2, 'admin', 'admin'),
+    (3, 'Albernn', '123'),
+    (4, 'Olof', '123');
 
 CREATE TABLE Ratings( 
     userID INT NOT NULL,
