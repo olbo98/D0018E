@@ -83,7 +83,7 @@ INSERT INTO `Pictures`(`picture`, `productID`, `description`,`link`)
 VALUES 
     ('IB2.jpg',1,'IB pic in product page',''),
     ('IBtrailer.PNG',1, 'IBtrailer pic in product page','https://www.youtube.com/embed/-2cRY4p7KIk'),
-    ('django2.jpg',4, 'Django pic in product page',''),
+    ('django2.jfif',4, 'Django pic in product page',''),
     ('djangotrailer.PNG',4, 'Djangotrailer pic in product page','https://www.youtube.com/embed/0fUCuvNlOCg'),
     ('Hollwood2.jpg',5, 'Hollywood pic in product page',''),
     ('hollywoodtrailer.PNG',5, 'Hollywoodrailer pic in product page','https://www.youtube.com/embed/Scf8nIJCvs4'),
