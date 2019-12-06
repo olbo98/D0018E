@@ -11,7 +11,6 @@ CREATE TABLE Products(
     quantity INT NOT NULL,
     price INT NOT NULL,
     description VARCHAR(255) NOT NULL,
-    picture VARCHAR(255) NOT NULL,
     rating INT NOT NULL,
     PRIMARY KEY(productID)
 );
@@ -91,7 +90,7 @@ VALUES
     ('killbill2.jpg',2, 'Killbill pic in product page',''),       
     ('killbilltrailer.PNG',2, 'Killbilltrailer pic in product page','https://www.youtube.com/embed/7kSuas6mRpk'),
     ('pulpfiction.jpg',3, 'Pulpfiction pic in product page',''),
-    ('pulpfictiontrailer.PNG',3, 'Pulpfictiontrailer pic in product page','https://www.youtube.com/embed/Scf8nIJCvs4');
+    ('pulpfictiontrailer.PNG',3, 'Pulpfictiontrailer pic in product page','https://www.youtube.com/embed/s7EdQ4FqbhY');
     
 INSERT INTO `Users`(`userID`, `username`, `password`) VALUES 
     (1,'Elsa','123'),
