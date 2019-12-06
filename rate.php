@@ -23,6 +23,7 @@ if (!$conn) {
 $query = "INSERT INTO `Ratings`(`userID`,`productID`, rating) VALUES(".$_SESSION['userID'].", ".$_GET['productID']." , ".$_GET['rating'].")";
 $result = $conn->query($query);
 
+
 header("Location: product.php?productID=".$_GET["productID"]);
 
 

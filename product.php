@@ -25,7 +25,7 @@ $query6 = "SELECT Products.*, AVG(Ratings.rating) as avgRating
 			ON Products.productID = Ratings.productID
 			WHERE Products.productID =".$_GET['productID'];
 			
-$query7 = "SELECT userID FROM Ratings where userID='".$_SESSION['userID']."' AND productID='".$_GET['productID']."'";
+
 
 			
 
@@ -36,7 +36,7 @@ $result2 = $conn->query($query2);
 $result4 = $conn->query($query4);
 $result5 = $conn->query($query5);
 $result6 = $conn->query($query6);
-$result7 = $conn->query($query7);
+
 
 
 $row = $result->fetch_assoc();
@@ -44,7 +44,7 @@ $row2 = $result2->fetch_all(MYSQLI_ASSOC);
 
 $row5 = $result5->fetch_assoc();
 $row6 = $result6->fetch_assoc();
-$row7 = $result7->fetch_assoc();
+
 
 //$avgRating = $row6['avgRating'];
 
@@ -145,12 +145,18 @@ $row7 = $result7->fetch_assoc();
 <div class="rate" style="margin-left: 20px;">
 <!--<form action="rate.php" method="post"> -->
 	<b>Rate this movie: </b>
-	<?php if($result7->num_rows==0): ?>
-		<?php foreach(range(1,5) as $row5['rating']):?>		
-		<a href="rate.php?productID=<?php echo $_GET['productID']?>&rating=<?php echo $row5['rating']; ?> "><?php echo $row5['rating']; ?></a>
-		<?php endforeach; ?>
-	<?php else: ?>
-		<?php echo "You have already rated!"; ?>
+	<?php if(isset($_SESSION["userID"])): ?>
+		<?php $query7 = "SELECT userID FROM Ratings where userID='".$_SESSION["userID"]."' AND productID='".$_GET['productID']."'"; ?>
+		<?php $result7 = $conn->query($query7); ?>
+		<?php if($result7->num_rows==0): ?>
+			<?php foreach(range(1,5) as $row5['rating']):?>		
+				<a href="rate.php?productID=<?php echo $_GET['productID']?>&rating=<?php echo $row5['rating']; ?> "><?php echo $row5['rating']; ?></a>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<?php echo "You have already rated!"; ?>
+		<?php endif; ?>
+	<?php else : ?>
+		<?php echo "You need to Log in to rate!"; ?>
 	<?php endif; ?>
 <!--</form>-->
 </div>
