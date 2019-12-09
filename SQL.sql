@@ -13,7 +13,7 @@ CREATE TABLE Products(
     description VARCHAR(255) NOT NULL,
     rating INT NOT NULL,
     PRIMARY KEY(productID),
-    CHECK (price >= 0)
+    CONSTRAINT CHK_Price CHECK (price >= 0)
 );
 
 CREATE TABLE Comments(

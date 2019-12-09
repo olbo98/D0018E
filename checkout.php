@@ -17,6 +17,13 @@ if(!checkUserLoginStatus()){
     header("Location: login.php");
 }
 
+$query = "SELECT COUNT(productID) FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
+$result = $conn->query($query);
+$count = $result->fetch_assoc();
+if($count <= 0){
+    header("Location: basket.php");
+}
+
 $ordID = "SELECT COUNT(orderID) FROM Orders";
 $ordRes = $conn->query($ordID);
 $rowORD = $ordRes->fetch_assoc();
