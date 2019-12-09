@@ -16,12 +16,16 @@ $query = "UPDATE Products SET price = ".$newPrice." WHERE productID =".$productI
 
 
 
-if(!$conn->query($query)){
-    echo "edit failed";
-    exit();
+if($newPrice <= 0){
+	echo "edit failed<br><brb>";
+	echo '<a href="index.php">Back to startpage and try again!</a>';
 }else{
-    echo "edit successful<br><br>"; 
-	echo '<a href="index.php">Back to startpage</a>';
+	if(!$conn->query($query)){
+		echo "edit failed";
+		exit();
+	}else{
+		echo "edit successful<br><br>"; 
+		echo '<a href="index.php">Back to startpage</a>';
+	}
 }
-
 ?>
