@@ -23,6 +23,7 @@ $row = $result->fetch_assoc();
 $count = $row["COUNT(productID)"];
 if($count <= 0){
     header("Location: basket.php");
+    exit();
 }
 
 $ordID = "SELECT COUNT(orderID) FROM Orders";
