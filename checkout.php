@@ -19,7 +19,8 @@ if(!checkUserLoginStatus()){
 
 $query = "SELECT COUNT(productID) FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 $result = $conn->query($query);
-$count = $result->fetch_assoc();
+$row = $result->fetch_assoc();
+$count = $row["COUNT(productID)"];
 if($count <= 0){
     header("Location: basket.php");
 }
