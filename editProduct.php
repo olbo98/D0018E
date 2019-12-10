@@ -9,6 +9,9 @@ $conn = connectToDB();
 $query = "SELECT productID, name FROM Products";
 $result = $conn->query($query);
 
+$query2 = "SELECT orderID, orderStatus FROM Orders";
+$result2 = $conn->query($query2);
+
 ?>
 <html lang="en">
   <head>
@@ -31,8 +34,9 @@ $result = $conn->query($query);
                     </label>
                     <select class="form-control" id="productToEdit" name="movieToEdit">
                         <?php
-                        while($row = $result->fetch_assoc()){
-                            echo '<option value="'.$row["productID"].'">'.$row["name"].'</option>';
+						$rows = $result->fetch_all(MYSQLI_ASSOC);
+                        for($i = 0; $i < count($rows); $i = $i + 1){
+                            echo '<option value="'.$rows[$i]["productID"].'">'.$rows[$i]["name"].'</option>';
                         }
                         ?>
                     </select>
@@ -42,7 +46,60 @@ $result = $conn->query($query);
                     <input type="number" class="form-control" id="newPrice" name="newPrice" placeholder="Value" required>
                 </div>
                 <button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
-            </form>
+            </form><br>
+			
+			<form method="post" action="orderStatusChange.php">
+				<div class="form-group">
+					<label for="orderToEdit">
+						Order to edit
+					</label>
+					<select class="form-control" id="orderToEdit" name="orderToEdit">
+						<?php
+						$rows2 = $result2->fetch_all(MYSQLI_ASSOC);
+						for($i = 0; $i < count($rows2); $i = $i + 1){
+                            echo '<option value="'.$rows2[$i]["orderID"].'">'.$rows2[$i]["orderID"].'</option>';
+                        }
+                        ?>
+                    </select>
+				</div>
+				<div class="form-group">
+					<label>Set Order Status </label>
+					<select class="form-control" id="orderStatus" name="orderStatus2">
+							<option value="complete">complete</option>
+							<option value="incomplete">incomplete</option>
+                    </select>
+				</div>
+				<?php 
+					if(count($rows2)==0){
+						echo '<input type="submit" class="btn btn1 btn-outline-dark btn-block" disabled value="No orders!">';
+					}else{
+						echo '<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>';
+					}
+				?>
+			</form><br>
+			
+			<form method="post" action="removeOrder.php">
+				<div class="form-group">
+					<label for="orderToRemove">
+						Order to remove
+					</label>
+					<select class="form-control" id="orderToRemove" name="orderToRemove2">
+						<?php
+                        for($i = 0; $i < count($rows2); $i = $i + 1){
+							
+                            echo '<option value="'.$rows2[$i]["orderID"].'">'.$rows2[$i]["orderID"].'</option>';
+                        }
+                        ?>
+                    </select>
+				</div>
+				<?php 
+					if(count($rows2)==0){
+						echo '<input type="submit" class="btn btn1 btn-outline-dark btn-block" disabled value="No orders!">';
+					}else{
+						echo '<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>';
+					}
+				?>
+			</form>
         </div>  
     </div>
 
