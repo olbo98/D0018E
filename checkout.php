@@ -41,7 +41,12 @@ $query = "SELECT * FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 $result = $conn->query($query);
 
 while($row = $result->fetch_assoc()){
-	$addOrder2 = "INSERT INTO orderItems (orderID, productID, quantity) VALUES (".$orderID.",".$row["productID"].",".$row["quantity"].")";
+    $queryGetSalePrice = "SELECT price FROM Products WHERE productID = ".$row["productID"];
+    $result = $conn->query($queryGetSalePrice);
+    $salePriceRow = $result->fetch_assoc();
+    $salePrice = $salePriceRow["price"];
+    
+	$addOrder2 = "INSERT INTO orderItems (orderID, productID, quantity, price) VALUES (".$orderID.",".$row["productID"].",".$row["quantity"].",".$salePrice.")";
     $conn->query($addOrder2);
 }
 

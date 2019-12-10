@@ -11,7 +11,7 @@ if(!checkUserLoginStatus())
 
 $conn = connectToDB();
 
-$queryProductOrder = "SELECT Orders.userID, Orders.orderDate, Orders.orderStatus, orderItems.*, Products.name, Products.price FROM ((Orders INNER JOIN orderItems ON Orders.orderID = orderItems.orderID) INNER JOIN Products ON orderItems.productID = Products.productID) WHERE userID=".$_SESSION["userID"]." ORDER BY orderID ASC";
+$queryProductOrder = "SELECT Orders.userID, Orders.orderDate, Orders.orderStatus, orderItems.*, Products.name FROM ((Orders INNER JOIN orderItems ON Orders.orderID = orderItems.orderID) INNER JOIN Products ON orderItems.productID = Products.productID) WHERE userID=".$_SESSION["userID"]." ORDER BY orderID ASC";
 
 $resultQueryProductOrder = $conn->query($queryProductOrder);
 $orderRow = $resultQueryProductOrder->fetch_assoc();
