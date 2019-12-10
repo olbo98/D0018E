@@ -21,17 +21,17 @@ if($count <= 0){
     exit();
 }
 
-$conn->autocommit(FALSE);
 $ordID = "SELECT COUNT(orderID) FROM Orders";
 $ordRes = $conn->query($ordID);
 $rowORD = $ordRes->fetch_assoc();
 $orderID = $rowORD["COUNT(orderID)"] + 1;
-$addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
-$conn->query($addOrder1)
     
 $query = "SELECT * FROM basketItems WHERE basketID = ".$_SESSION["basketID"]; 
 	 
 $result = $conn->query($query);
+
+$allQueriesToInsert = array();
+$index = 0;
 while($row = $result->fetch_assoc()){
     $queryGetSalePrice = "SELECT price FROM Products WHERE productID = ".$row["productID"];
     $result = $conn->query($queryGetSalePrice);
@@ -39,8 +39,19 @@ while($row = $result->fetch_assoc()){
     $salePrice = $salePriceRow["price"];
     
 	$addOrder2 = "INSERT INTO orderItems (orderID, productID, quantity, price) VALUES (".$orderID.",".$row["productID"].",".$row["quantity"].",".$salePrice.")";
-    $conn->query($addOrder2);
+    $allQueriesToInsert[$index] = $addOrder2;
+    $index++;
 }
+
+$conn->autocommit(FALSE);
+
+$addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
+$conn->query($addOrder1)
+
+for($i = 0; $i < count($allQueriesToInsert); $i++){
+    $conn->query($allQueriesToInsert[$i]);
+}
+
 $del = "DELETE FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 $conn->query($del);
 
