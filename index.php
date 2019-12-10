@@ -70,6 +70,10 @@ $movieID = $result->fetch_assoc();
             {
                 echo '<a class="nav-link" href="login.php" style="font-size: 20px;"> Log in</a>';
             }
+            
+            if(isset($_SESSION["username"]) && $_SESSION["username"] == "admin"){
+                echo '<a class="nav-link" href="editProduct.php" style="font-size: 20px;">...</a>';
+            }
             ?>
 		</ul>
 		</div>

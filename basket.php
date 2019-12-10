@@ -98,6 +98,8 @@ $totalPrice = 0;
 							</td>
 							<td data-th="Price">'.$row["price"].'kr</td>
 							<td data-th="Quantity">
+                                <a href="addQuantity.php?productID='.$row["productID"].'">Add</a>
+                                <a href="subtractQuantity.php?productID='.$row["productID"].'">Subtract</a>
 								<input type="number" class="form-control text-center" value='.$row["quantity"].' disabled>
 							</td>
 							<td data-th="Subtotal" class="text-center">'.$subTotal.'kr</td>
