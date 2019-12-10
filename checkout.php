@@ -20,14 +20,14 @@ if($count <= 0){
     header("Location: basket.php");
     exit();
 }
+
+$conn->autocommit(FALSE);
 $ordID = "SELECT COUNT(orderID) FROM Orders";
 $ordRes = $conn->query($ordID);
 $rowORD = $ordRes->fetch_assoc();
 $orderID = $rowORD["COUNT(orderID)"] + 1;
 $addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
-if(!$conn->query($addOrder1)){
-    echo "fail add ord 1";
-}
+$conn->query($addOrder1)
     
 $query = "SELECT * FROM basketItems WHERE basketID = ".$_SESSION["basketID"]; 
 	 
@@ -42,8 +42,12 @@ while($row = $result->fetch_assoc()){
     $conn->query($addOrder2);
 }
 $del = "DELETE FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
-if(!$conn->query($del)){
-    echo "fail del";
+$conn->query($del);
+
+if(!$conn->commit()){
+    echo "Register failed";
+    exit();
 }
+
 header("Location: buypage.php");
 ?>
