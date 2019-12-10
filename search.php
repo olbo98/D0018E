@@ -1,22 +1,20 @@
 <?php
-
-include "functions.php";
 session_start();
-$servername = "127.0.0.1";
-$username = "98102221";
-$password = "98102221";
-$dbname = "db98102221";
-$conn = new mysqli($servername, $username, $password, $dbname);
+include "functions.php";
+$conn = connectToDB();
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-if(!checkUserLoginStatus()){
-    header("Location: index.php");
+echo "Result: <br>";
+$input = $_GET["input"];
+$query = "SELECT name, productID FROM Products WHERE name LIKE '".$input."%'";
+if(!$result = $conn->query($query)){
+    echo " none";
 }
 
-$input = $_GET["input"];
-$query = "SELECT * FROM Products where name = ".$input;
-
+while($row = $result->fetch_assoc()){
+    echo '<a href="product.php?productID='.$row["productID"].'">'.$row["name"].'</a><br>';
+}
 
 ?>
 
