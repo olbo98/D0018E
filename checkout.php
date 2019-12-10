@@ -26,7 +26,7 @@ $rowORD = $ordRes->fetch_assoc();
 $orderID = $rowORD["COUNT(orderID)"] + 1;
 $addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
 if(!$conn->query($addOrder1)){
-    echo "fail stupid bitch aad ord 1";
+    echo "fail add ord 1";
 }
     
 $query = "SELECT * FROM basketItems WHERE basketID = ".$_SESSION["basketID"]; 
@@ -43,7 +43,7 @@ while($row = $result->fetch_assoc()){
 }
 $del = "DELETE FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 if(!$conn->query($del)){
-    echo "fail stupid bitch del";
+    echo "fail del";
 }
 header("Location: buypage.php");
 ?>
