@@ -12,10 +12,6 @@ if (!$conn) {
 if(!checkUserLoginStatus()){
     header("Location: login.php");
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 79ea65e5e524b88d3ceb252f83a4ac47814d5d12
 $query = "SELECT COUNT(productID) FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
@@ -24,10 +20,6 @@ if($count <= 0){
     header("Location: basket.php");
     exit();
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 79ea65e5e524b88d3ceb252f83a4ac47814d5d12
 $ordID = "SELECT COUNT(orderID) FROM Orders";
 $ordRes = $conn->query($ordID);
 $rowORD = $ordRes->fetch_assoc();
