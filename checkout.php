@@ -31,25 +31,22 @@ $query = "SELECT * FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 $result = $conn->query($query);
 
 $allQueriesToInsert = array();
-$index = 0;
-while($row = $result->fetch_assoc()){
-    $queryGetSalePrice = "SELECT price FROM Products WHERE productID = ".$row["productID"];
+$row = $result->fetch_all(MYSQLI_ASSOC);
+for($i = 0; $i < count($row); $i = $i + 1){
+    $queryGetSalePrice = "SELECT price FROM Products WHERE productID = ".$row[$i]["productID"];
     $result = $conn->query($queryGetSalePrice);
     $salePriceRow = $result->fetch_assoc();
     $salePrice = $salePriceRow["price"];
-    
-	$addOrder2 = "INSERT INTO orderItems (orderID, productID, quantity, price) VALUES (".$orderID.",".$row["productID"].",".$row["quantity"].",".$salePrice.")";
-    $allQueriesToInsert[$index] = $addOrder2;
-    $index++;
+	$allQueriesToInsert[$i] = "INSERT INTO orderItems (orderID, productID, quantity, price) VALUES (".$orderID.",".$row[$i]["productID"].",".$row[$i]["quantity"].",".$salePrice.")";
 }
 
 $conn->autocommit(FALSE);
 
 $addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
-$conn->query($addOrder1)
+$conn->query($addOrder1);
 
-for($i = 0; $i < count($allQueriesToInsert); $i++){
-    $conn->query($allQueriesToInsert[$i]);
+for($ix = 0; $ix < count($allQueriesToInsert); $ix = $ix + 1){
+    $conn->query($allQueriesToInsert[$ix]);
 }
 
 $del = "DELETE FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
