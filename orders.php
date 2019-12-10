@@ -73,6 +73,7 @@ $resultCountOrders = $conn->query($queryCountOrders);
           echo '<div class="d-flex order-head">
         <div class="flex-grow-1" style="font-size: 20px;">Order ID: '.$orderRow["orderID"].'</div>
         <div style="font-size: 20px; padding-right: 10px">Date: '.$orderRow["orderDate"].'</div>
+        <div style="font-size: 20px; padding-right: 10px">Date: '.$orderRow["orderStatus"].'</div>
     </div>';
           
           echo '<div class="d-flex order-products">
