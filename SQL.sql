@@ -73,7 +73,7 @@ CREATE TABLE Pictures(
 
 INSERT INTO `Products`(`name`, `quantity`, `price`, `description`)
 VALUES
-    ('Inglourious Bastards',10,3000,'In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of <br> Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.'),
+    ('Inglourious Bastards',10,3000,'In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of <br> Jewish U.S. soldiers coincides with a theatre owners vengeful plans for the same.'),
     ('Kill Bill',10,2000,'After awakening from a four-year coma, a former <br> assassin wreaks vengeance on the team of assassins who betrayed her.'),
     ('Pulp Fiction',10,1000,'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair <br> of diner bandits intertwine in four tales of violence and redemption.'),                                                                           
     ('Django Unchained',10,4000,'With the help of a German bounty hunter, a freed slave sets out to rescue <br> his wife from a brutal Mississippi plantation owner.'),
