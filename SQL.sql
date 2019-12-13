@@ -57,6 +57,7 @@ CREATE TABLE orderItems(
     orderID INT NOT NULL,
     productID INT NOT NULL,
     quantity INT NOT NULL,
+    price INT NOT NULL,
     PRIMARY KEY(itemID),
     FOREIGN KEY(orderID) REFERENCES Orders(orderID),
     FOREIGN KEY(productID) REFERENCES Products(productID)
