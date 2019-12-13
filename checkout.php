@@ -1,17 +1,16 @@
-,<?php
+<?php
 include "functions.php";
 session_start();
-$servername = "127.0.0.1";
-$username = "98102221";
-$password = "98102221";
-$dbname = "db98102221";
-$conn = new mysqli($servername, $username, $password, $dbname);
+
+$conn = connectToDB();
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 if(!checkUserLoginStatus()){
     header("Location: login.php");
 }
+
 $query = "SELECT COUNT(productID) FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
 $result = $conn->query($query);
 $row = $result->fetch_assoc();
@@ -38,9 +37,10 @@ for($i = 0; $i < count($row); $i = $i + 1){
     $salePriceRow = $result->fetch_assoc();
     $salePrice = $salePriceRow["price"];
 	$allQueriesToInsert[$i] = "INSERT INTO orderItems (orderID, productID, quantity, price) VALUES (".$orderID.",".$row[$i]["productID"].",".$row[$i]["quantity"].",".$salePrice.")";
+    echo $allQueriesToInsert[$i];
 }
 
-$conn->autocommit(FALSE);
+$conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
 $addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
 $conn->query($addOrder1);
@@ -57,5 +57,5 @@ if(!$conn->commit()){
     exit();
 }
 
-header("Location: buypage.php");
+//header("Location: buypage.php");
 ?>
