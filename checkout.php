@@ -37,16 +37,20 @@ for($i = 0; $i < count($row); $i = $i + 1){
     $salePriceRow = $result->fetch_assoc();
     $salePrice = $salePriceRow["price"];
 	$allQueriesToInsert[$i] = "INSERT INTO orderItems (orderID, productID, quantity, price) VALUES (".$orderID.",".$row[$i]["productID"].",".$row[$i]["quantity"].",".$salePrice.")";
-    echo $allQueriesToInsert[$i];
 }
 
 $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
-$addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("m.d.y")."', 'incomplete')";
-$conn->query($addOrder1);
+$addOrder1 = "INSERT INTO Orders (orderID, userID, orderDate, orderStatus) VALUES (".$orderID.",".$_SESSION["userID"].", '".date("y-m-d")."', 'incomplete')";
+if(!$conn->query($addOrder1)){
+    echo "order fuk";
+}
 
 for($ix = 0; $ix < count($allQueriesToInsert); $ix = $ix + 1){
-    $conn->query($allQueriesToInsert[$ix]);
+    if(!$conn->query($allQueriesToInsert[$ix])){
+        echo "dumb bitch";
+        exit();
+    }
 }
 
 $del = "DELETE FROM basketItems WHERE basketID = ".$_SESSION["basketID"];
@@ -57,5 +61,5 @@ if(!$conn->commit()){
     exit();
 }
 
-//header("Location: buypage.php");
+header("Location: buypage.php");
 ?>
