@@ -77,7 +77,7 @@ VALUES
     ('Kill Bill',10,2000,'After awakening from a four-year coma, a former <br> assassin wreaks vengeance on the team of assassins who betrayed her.',0),
     ('Pulp Fiction',10,1000,'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair <br> of diner bandits intertwine in four tales of violence and redemption.',0),                                                                           
     ('Django Unchained',10,4000,'With the help of a German bounty hunter, a freed slave sets out to rescue <br> his wife from a brutal Mississippi plantation owner.',0),
-    ('Once upon a time in hollywood',10,5000,'A faded television actor and his stunt double strive to achieve fame and success in the film <br> industry during the final years of Hollywood's Golden Age in 1969 Los Angeles.',0);
+    ('Once upon a time in hollywood',10,5000,'A faded television actor and his stunt double strive to achieve fame and success in the film <br> industry during the final years of Hollywoods Golden Age in 1969 Los Angeles.',0);
     
 INSERT INTO `Pictures`(`picture`, `productID`, `description`,`link`) 
 VALUES 
