@@ -35,6 +35,10 @@ if (!$conn) {
 		<ul class="navbar-nav">
 			<a class="nav-link" href="movies.php" style="font-size: 20px;">Movies</a>
 			<a class="nav-link" href="orders.php" style="font-size: 20px;">Order</a>
+            <form method="get" action="search.php"> 
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="input">
+                <button type="submit">Submit</button>
+            </form>
 		</ul>
 		</div>
   
@@ -47,6 +51,10 @@ if (!$conn) {
             else
             {
                 echo '<a class="nav-link" href="login.php" style="font-size: 20px;"> Log in</a>';
+            }
+            
+            if(isset($_SESSION["username"]) && $_SESSION["username"] == "admin"){
+                echo '<a class="nav-link" href="editProduct.php" style="font-size: 20px;">...</a>';
             }
             ?>
 		</ul>

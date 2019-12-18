@@ -7,7 +7,7 @@ if (!$conn) {
 }
 echo "Result: <br>";
 $input = $_GET["input"];
-$query = "SELECT name, productID FROM Products WHERE name LIKE '".$input."%'";
+$query = "SELECT name, productID FROM Products WHERE name LIKE '%".$input."%'";
 if(!$result = $conn->query($query)){
     echo " none";
 }
